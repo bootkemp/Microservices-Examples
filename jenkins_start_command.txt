@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF-8 -XX:PermSize=256m -XX:MaxPermSize=512m -Xms256m -Xmx512m -Djava.io.tmpdir=C:/Satish/jenkins/temp -jar C:/Satish/jenkins/jenkins.war --httpPort=7000
