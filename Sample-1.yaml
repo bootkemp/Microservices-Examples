@@ -1,0 +1,77 @@
+swagger: '2.0'
+info:
+  description: |
+    This is a sample Car Show Room server.  
+    
+  version: 1.0.0
+  title: Car Show Room
+  
+  contact:
+    email: test@test.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    
+    
+tags:
+  - name: car
+    
+paths:
+  /car:
+
+    post:
+      tags:
+      - car
+      summary: Add a new car to the showroom
+      operationId: addCar
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Car object that needs to be added to the showroom
+        required: true
+        schema:
+          $ref: '#/definitions/Car'
+      responses:
+        405:
+          description: Invalid input
+
+definitions:
+
+  Car:
+    type: object
+    required:
+    - carNumber
+    - category
+    
+    properties:
+      
+      carNumber:
+        type: integer
+        format: int64
+        
+      category:
+        $ref: '#/definitions/Category'
+
+      status:
+        type: string
+        description: Car status in the Show Room
+        enum:
+        - available
+        - sold
+
+  Category:
+    type: object
+    required:
+    - make
+    - model
+    properties:
+      make:
+        type: string
+      model:
+        type: string
+
+
